@@ -41,12 +41,49 @@
       justify-content: center;
       color: #ffffff;
       padding: 20px;
+      position: relative;
+      overflow-x: hidden;
     }
+
+    .snow-wrap {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 10px;
+      user-select: none;
+      animation-name: snowFall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      text-shadow: 0 0 10px rgba(255,255,255,0.25);
+    }
+
+    .snowflake:nth-child(1)  { left: 5%;  font-size: 10px; animation-duration: 9s;  animation-delay: 0s; }
+    .snowflake:nth-child(2)  { left: 12%; font-size: 14px; animation-duration: 12s; animation-delay: 1s; }
+    .snowflake:nth-child(3)  { left: 20%; font-size: 8px;  animation-duration: 10s; animation-delay: 2s; }
+    .snowflake:nth-child(4)  { left: 28%; font-size: 13px; animation-duration: 14s; animation-delay: 0.5s; }
+    .snowflake:nth-child(5)  { left: 36%; font-size: 9px;  animation-duration: 11s; animation-delay: 1.5s; }
+    .snowflake:nth-child(6)  { left: 44%; font-size: 12px; animation-duration: 13s; animation-delay: 2.5s; }
+    .snowflake:nth-child(7)  { left: 52%; font-size: 10px; animation-duration: 9.5s; animation-delay: 0.8s; }
+    .snowflake:nth-child(8)  { left: 60%; font-size: 15px; animation-duration: 12.5s; animation-delay: 1.8s; }
+    .snowflake:nth-child(9)  { left: 68%; font-size: 9px;  animation-duration: 10.5s; animation-delay: 2.2s; }
+    .snowflake:nth-child(10) { left: 76%; font-size: 13px; animation-duration: 13.5s; animation-delay: 0.3s; }
+    .snowflake:nth-child(11) { left: 84%; font-size: 11px; animation-duration: 11.5s; animation-delay: 1.2s; }
+    .snowflake:nth-child(12) { left: 92%; font-size: 14px; animation-duration: 12s; animation-delay: 2.8s; }
 
     .container {
       width: 100%;
       max-width: 520px;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     .card {
@@ -109,6 +146,23 @@
       }
     }
 
+    @keyframes snowFall {
+      0% {
+        transform: translateY(-10px) translateX(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(50vh) translateX(12px);
+      }
+      100% {
+        transform: translateY(110vh) translateX(-10px);
+        opacity: 0.2;
+      }
+    }
+
     @media (max-width: 640px) {
       .card {
         padding: 14px;
@@ -122,6 +176,13 @@
 
       .copyright {
         font-size: 12px;
+      }
+
+      .snowflake:nth-child(9),
+      .snowflake:nth-child(10),
+      .snowflake:nth-child(11),
+      .snowflake:nth-child(12) {
+        display: none;
       }
     }
   </style>
@@ -138,10 +199,25 @@
   </script>
 </head>
 <body>
+  <div class="snow-wrap" aria-hidden="true">
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❅</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❅</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❅</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❅</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❅</span>
+    <span class="snowflake">❄</span>
+    <span class="snowflake">❅</span>
+  </div>
+
   <main class="container">
     <section class="card">
       <img src="https://sultanlulu-cat.github.io/assets/pentol.gif" alt="Foto utama landing page" class="main-image" />
-          <p class="cta-note">Klik tombol di bawah untuk masuk ke website dengan lebih cepat.</p>
+      <p class="cta-note">Klik tombol di bawah untuk masuk ke website dengan lebih cepat.</p>
       <a href="https://goolink.id/sultan-all" class="btn" target="_blank" rel="nofollow noopener">Masuk Sekarang</a>
     </section>
     <div class="copyright">© 2026 SultanLulu. All Rights Reserved.</div>
